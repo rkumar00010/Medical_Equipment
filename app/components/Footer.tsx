@@ -155,7 +155,7 @@ const Footer = () => {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
               <Link
-                href="/products"
+                href="/products/diagnostic-equipment"
                 sx={{
                   color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',
@@ -165,7 +165,7 @@ const Footer = () => {
                 Diagnostic Equipment
               </Link>
               <Link
-                href="/products"
+                href="/products/hospital-furniture"
                 sx={{
                   color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',
@@ -175,7 +175,7 @@ const Footer = () => {
                 Hospital Furniture
               </Link>
               <Link
-                href="/products"
+                href="/products/surgical-instruments"
                 sx={{
                   color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',
@@ -185,7 +185,7 @@ const Footer = () => {
                 Surgical Instruments
               </Link>
               <Link
-                href="/products"
+                href="/products/icu-emergency"
                 sx={{
                   color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',
@@ -195,7 +195,7 @@ const Footer = () => {
                 ICU & Emergency
               </Link>
               <Link
-                href="/products"
+                href="/products/laboratory-equipment"
                 sx={{
                   color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',
@@ -205,7 +205,7 @@ const Footer = () => {
                 Laboratory Equipment
               </Link>
               <Link
-                href="/products"
+                href="/products/ppe-safety"
                 sx={{
                   color: 'rgba(255, 255, 255, 0.7)',
                   textDecoration: 'none',

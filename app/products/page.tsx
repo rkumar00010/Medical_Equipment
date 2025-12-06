@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Image from 'next/image';
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -8,7 +8,6 @@ import {
   Grid,
   Card,
   CardContent,
-  CardMedia,
   Button,
   Chip,
 } from '@mui/material';
@@ -25,6 +24,7 @@ export default function ProductsPage() {
   const productCategories = [
     {
       title: 'Diagnostic Equipment',
+      slug: 'diagnostic-equipment',
       icon: <Science sx={{ fontSize: 60, color: '#1976d2' }} />,
       description: 'Advanced diagnostic tools including X-ray machines, ultrasound scanners, ECG machines, and blood analyzers.',
       items: ['X-Ray Machines', 'Ultrasound Scanners', 'ECG Machines', 'Blood Analyzers', 'CT Scanners', 'MRI Equipment'],
@@ -32,6 +32,7 @@ export default function ProductsPage() {
     },
     {
       title: 'Hospital Furniture',
+      slug: 'hospital-furniture',
       icon: <LocalHospital sx={{ fontSize: 60, color: '#1976d2' }} />,
       description: 'Premium quality hospital beds, patient trolleys, operation tables, and medical furniture.',
       items: ['Hospital Beds', 'Patient Trolleys', 'Operation Tables', 'ICU Beds', 'Stretchers', 'Medical Cabinets'],
@@ -39,6 +40,7 @@ export default function ProductsPage() {
     },
     {
       title: 'Surgical Instruments',
+      slug: 'surgical-instruments',
       icon: <Healing sx={{ fontSize: 60, color: '#1976d2' }} />,
       description: 'Precision surgical instruments and tools for various medical procedures.',
       items: ['Surgical Scissors', 'Forceps', 'Scalpels', 'Retractors', 'Surgical Sets', 'Laparoscopic Instruments'],
@@ -46,6 +48,7 @@ export default function ProductsPage() {
     },
     {
       title: 'Laboratory Equipment',
+      slug: 'laboratory-equipment',
       icon: <Biotech sx={{ fontSize: 60, color: '#1976d2' }} />,
       description: 'Complete range of laboratory equipment for accurate testing and analysis.',
       items: ['Microscopes', 'Centrifuges', 'Incubators', 'Autoclaves', 'Lab Analyzers', 'Refrigerators'],
@@ -53,6 +56,7 @@ export default function ProductsPage() {
     },
     {
       title: 'ICU & Emergency',
+      slug: 'icu-emergency',
       icon: <LocalHospitalOutlined sx={{ fontSize: 60, color: '#1976d2' }} />,
       description: 'Critical care equipment including ventilators, monitors, defibrillators, and emergency supplies.',
       items: ['Ventilators', 'Patient Monitors', 'Defibrillators', 'Infusion Pumps', 'Syringe Pumps', 'Emergency Carts'],
@@ -60,6 +64,7 @@ export default function ProductsPage() {
     },
     {
       title: 'PPE & Safety',
+      slug: 'ppe-safety',
       icon: <VerifiedUser sx={{ fontSize: 60, color: '#1976d2' }} />,
       description: 'Personal protective equipment and safety supplies for healthcare professionals.',
       items: ['Face Masks', 'Gloves', 'Gowns', 'Face Shields', 'Sanitizers', 'Safety Kits'],
@@ -130,26 +135,22 @@ export default function ProductsPage() {
                     position: 'relative',
                     height: 250,
                     width: '100%',
+                    backgroundColor: 'linear-gradient(135deg, rgba(25, 118, 210, 0.1) 0%, rgba(21, 101, 192, 0.1) 100%)',
+                    background: 'linear-gradient(135deg, rgba(25, 118, 210, 0.08) 0%, rgba(21, 101, 192, 0.08) 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
-                  <Image
-                    src={category.image}
-                    alt={category.title}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
                   <Box
                     sx={{
-                      position: 'absolute',
-                      top: 16,
-                      right: 16,
                       backgroundColor: 'rgba(255, 255, 255, 0.95)',
                       borderRadius: 2,
-                      p: 1.5,
+                      p: 3,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                     }}
                   >
                     {category.icon}
@@ -176,19 +177,21 @@ export default function ProductsPage() {
                       />
                     ))}
                   </Box>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                      mt: 2,
-                      backgroundColor: '#1976d2',
-                      '&:hover': {
-                        backgroundColor: '#1565c0',
-                      },
-                    }}
-                  >
-                    View All Products
-                  </Button>
+                  <Link href={`/products/${category.slug}`} style={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      sx={{
+                        mt: 2,
+                        backgroundColor: '#1976d2',
+                        '&:hover': {
+                          backgroundColor: '#1565c0',
+                        },
+                      }}
+                    >
+                      View All Products
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </Grid>

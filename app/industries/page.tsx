@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -207,18 +208,20 @@ export default function IndustriesPage() {
                       />
                     ))}
                   </Box>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                      backgroundColor: '#1976d2',
-                      '&:hover': {
-                        backgroundColor: '#1565c0',
-                      },
-                    }}
-                  >
-                    Explore Solutions
-                  </Button>
+                  <Link href="/contact" style={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      sx={{
+                        backgroundColor: '#1976d2',
+                        '&:hover': {
+                          backgroundColor: '#1565c0',
+                        },
+                      }}
+                    >
+                      Explore Solutions
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </Grid>

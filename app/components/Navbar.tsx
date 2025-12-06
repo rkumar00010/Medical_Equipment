@@ -32,7 +32,6 @@ import {
   Email,
 } from '@mui/icons-material';
 import Link from 'next/link';
-// import Grid from "@mui/material/Grid";
 
 
 const Navbar = () => {
@@ -143,17 +142,21 @@ const Navbar = () => {
         {navItems.map((item) => (
           <React.Fragment key={item.label}>
             <ListItem disablePadding>
-              <ListItemButton component={Link} href={item.href || '#'}>
-                <ListItemText primary={item.label} />
-              </ListItemButton>
+              <Link href={item.href || '#'} style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                <ListItemButton>
+                  <ListItemText primary={item.label} />
+                </ListItemButton>
+              </Link>
             </ListItem>
             {item.label === 'Products' && (
               <List component="div" disablePadding>
                 {productsCategories.map((category) => (
                   <ListItem key={category} disablePadding>
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemText primary={category} />
-                    </ListItemButton>
+                    <Link href={`/products/${category.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                      <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemText primary={category} />
+                      </ListItemButton>
+                    </Link>
                   </ListItem>
                 ))}
               </List>
@@ -162,9 +165,11 @@ const Navbar = () => {
               <List component="div" disablePadding>
                 {brandsList.map((brand) => (
                   <ListItem key={brand} disablePadding>
-                    <ListItemButton sx={{ pl: 4 }}>
-                      <ListItemText primary={brand} />
-                    </ListItemButton>
+                    <Link href={`/brands/${brand.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none', color: 'inherit', width: '100%' }}>
+                      <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemText primary={brand} />
+                      </ListItemButton>
+                    </Link>
                   </ListItem>
                 ))}
               </List>
@@ -263,283 +268,289 @@ const Navbar = () => {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <Button
-                component={Link}
-                href="/"
-                sx={{
-                  color: '#000000',
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1,
-                  borderRadius: 2,
-                  fontSize: '0.95rem',
-                  textTransform: 'none',
-                  position: 'relative',
-                  '&:hover': { 
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+              <Link href="/" style={{ textDecoration: 'none' }}>
+                <Button
+                  sx={{
                     color: '#000000',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 2,
-                    backgroundColor: '#000000',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '60%',
-                  },
-                }}
-              >
-                Home
-              </Button>
+                    fontWeight: 600,
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 2,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    '&:hover': { 
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      color: '#000000',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 2,
+                      backgroundColor: '#000000',
+                      transition: 'width 0.3s ease',
+                    },
+                    '&:hover::after': {
+                      width: '60%',
+                    },
+                  }}
+                >
+                  Home
+                </Button>
+              </Link>
 
-              <Button
-                onClick={handleProductsMenuOpen}
-                sx={{
-                  color: '#000000',
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1,
-                  borderRadius: 2,
-                  fontSize: '0.95rem',
-                  textTransform: 'none',
-                  position: 'relative',
-                  '&:hover': { 
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+              <Link href="/products" style={{ textDecoration: 'none' }}>
+                <Button
+                  onMouseEnter={handleProductsMenuOpen}
+                  onClick={handleProductsMenuOpen}
+                  sx={{
                     color: '#000000',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 2,
-                    backgroundColor: '#000000',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '60%',
-                  },
-                }}
-              >
-                Products
-              </Button>
+                    fontWeight: 600,
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 2,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    '&:hover': { 
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      color: '#000000',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 2,
+                      backgroundColor: '#000000',
+                      transition: 'width 0.3s ease',
+                    },
+                    '&:hover::after': {
+                      width: '60%',
+                    },
+                  }}
+                >
+                  Products
+                </Button>
+              </Link>
 
-              <Button
-                component={Link}
-                href="/categories"
-                sx={{
-                  color: '#000000',
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1,
-                  borderRadius: 2,
-                  fontSize: '0.95rem',
-                  textTransform: 'none',
-                  position: 'relative',
-                  '&:hover': { 
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+              <Link href="/categories" style={{ textDecoration: 'none' }}>
+                <Button
+                  sx={{
                     color: '#000000',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 2,
-                    backgroundColor: '#000000',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '60%',
-                  },
-                }}
-              >
-                Categories
-              </Button>
+                    fontWeight: 600,
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 2,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    '&:hover': { 
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      color: '#000000',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 2,
+                      backgroundColor: '#000000',
+                      transition: 'width 0.3s ease',
+                    },
+                    '&:hover::after': {
+                      width: '60%',
+                    },
+                  }}
+                >
+                  Categories
+                </Button>
+              </Link>
 
-              <Button
-                component={Link}
-                href="/services"
-                sx={{
-                  color: '#000000',
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1,
-                  borderRadius: 2,
-                  fontSize: '0.95rem',
-                  textTransform: 'none',
-                  position: 'relative',
-                  '&:hover': { 
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+              <Link href="/services" style={{ textDecoration: 'none' }}>
+                <Button
+                  sx={{
                     color: '#000000',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 2,
-                    backgroundColor: '#000000',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '60%',
-                  },
-                }}
-              >
-                Services
-              </Button>
+                    fontWeight: 600,
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 2,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    '&:hover': { 
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      color: '#000000',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 2,
+                      backgroundColor: '#000000',
+                      transition: 'width 0.3s ease',
+                    },
+                    '&:hover::after': {
+                      width: '60%',
+                    },
+                  }}
+                >
+                  Services
+                </Button>
+              </Link>
 
-              <Button
-                component={Link}
-                href="/industries"
-                sx={{
-                  color: '#000000',
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1,
-                  borderRadius: 2,
-                  fontSize: '0.95rem',
-                  textTransform: 'none',
-                  position: 'relative',
-                  '&:hover': { 
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+              <Link href="/industries" style={{ textDecoration: 'none' }}>
+                <Button
+                  sx={{
                     color: '#000000',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 2,
-                    backgroundColor: '#000000',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '60%',
-                  },
-                }}
-              >
-                Industries
-              </Button>
+                    fontWeight: 600,
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 2,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    '&:hover': { 
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      color: '#000000',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 2,
+                      backgroundColor: '#000000',
+                      transition: 'width 0.3s ease',
+                    },
+                    '&:hover::after': {
+                      width: '60%',
+                    },
+                  }}
+                >
+                  Industries
+                </Button>
+              </Link>
 
-              <Button
-                onClick={handleBrandsMenuOpen}
-                sx={{
-                  color: '#000000',
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1,
-                  borderRadius: 2,
-                  fontSize: '0.95rem',
-                  textTransform: 'none',
-                  position: 'relative',
-                  '&:hover': { 
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+              <Link href="/brands" style={{ textDecoration: 'none' }}>
+                <Button
+                  onMouseEnter={handleBrandsMenuOpen}
+                  onClick={handleBrandsMenuOpen}
+                  sx={{
                     color: '#000000',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 2,
-                    backgroundColor: '#000000',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '60%',
-                  },
-                }}
-              >
-                Brands
-              </Button>
+                    fontWeight: 600,
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 2,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    '&:hover': { 
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      color: '#000000',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 2,
+                      backgroundColor: '#000000',
+                      transition: 'width 0.3s ease',
+                    },
+                    '&:hover::after': {
+                      width: '60%',
+                    },
+                  }}
+                >
+                  Brands
+                </Button>
+              </Link>
 
-              <Button
-                component={Link}
-                href="/about"
-                sx={{
-                  color: '#000000',
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1,
-                  borderRadius: 2,
-                  fontSize: '0.95rem',
-                  textTransform: 'none',
-                  position: 'relative',
-                  '&:hover': { 
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+              <Link href="/about" style={{ textDecoration: 'none' }}>
+                <Button
+                  sx={{
                     color: '#000000',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 2,
-                    backgroundColor: '#000000',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '60%',
-                  },
-                }}
-              >
-                About
-              </Button>
+                    fontWeight: 600,
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 2,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    '&:hover': { 
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      color: '#000000',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 2,
+                      backgroundColor: '#000000',
+                      transition: 'width 0.3s ease',
+                    },
+                    '&:hover::after': {
+                      width: '60%',
+                    },
+                  }}
+                >
+                  About
+                </Button>
+              </Link>
 
-              <Button
-                component={Link}
-                href="/contact"
-                sx={{
-                  color: '#000000',
-                  fontWeight: 600,
-                  px: 2.5,
-                  py: 1,
-                  borderRadius: 2,
-                  fontSize: '0.95rem',
-                  textTransform: 'none',
-                  position: 'relative',
-                  '&:hover': { 
-                    backgroundColor: 'rgba(25, 118, 210, 0.08)',
+              <Link href="/contact" style={{ textDecoration: 'none' }}>
+                <Button
+                  sx={{
                     color: '#000000',
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: 0,
-                    height: 2,
-                    backgroundColor: '#000000',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '60%',
-                  },
-                }}
-              >
-                Contact
-              </Button>
+                    fontWeight: 600,
+                    px: 2.5,
+                    py: 1,
+                    borderRadius: 2,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    position: 'relative',
+                    '&:hover': { 
+                      backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                      color: '#000000',
+                    },
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: 0,
+                      height: 2,
+                      backgroundColor: '#000000',
+                      transition: 'width 0.3s ease',
+                    },
+                    '&:hover::after': {
+                      width: '60%',
+                    },
+                  }}
+                >
+                  Contact
+                </Button>
+              </Link>
             </Box>
 
             {/* Right Side Icons */}
@@ -637,20 +648,20 @@ const Navbar = () => {
             <Grid container spacing={2}>
               {productsCategories.map((category) => (
                 <Grid item xs={6} key={category}>
-                  <MenuItem
-                    component={Link}
-                    href={`/products/${category.toLowerCase().replace(/\s+/g, '-')}`}
-                    onClick={handleProductsMenuClose}
-                    sx={{
-                      py: 1.5,
-                      borderRadius: 1,
-                      '&:hover': {
-                        backgroundColor: 'rgba(0, 0, 0, 0.08)',
-                      },
-                    }}
-                  >
-                    <Typography variant="body1">{category}</Typography>
-                  </MenuItem>
+                  <Link href={`/products/${category.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <MenuItem
+                      onClick={handleProductsMenuClose}
+                      sx={{
+                        py: 1.5,
+                        borderRadius: 1,
+                        '&:hover': {
+                          backgroundColor: 'rgba(0, 0, 0, 0.08)',
+                        },
+                      }}
+                    >
+                      <Typography variant="body1">{category}</Typography>
+                    </MenuItem>
+                  </Link>
                 </Grid>
               ))}
             </Grid>
@@ -683,24 +694,23 @@ const Navbar = () => {
             <Grid container spacing={2}>
               {brandsList.map((brand) => (
                 <Grid item xs={4} key={brand}>
-                  <MenuItem
-                    component={Link}
-                    href={`/brands/${brand.toLowerCase().replace(/\s+/g, '-')}`}
-                    onClick={handleBrandsMenuClose}
-                    sx={{
-                      py: 2,
-                      borderRadius: 1,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      border: '1px solid rgba(0, 0, 0, 0.2)',
-                      '&:hover': {
-                        backgroundColor: 'rgba(0, 0, 0, 0.08)',
-                        borderColor: '#000000',
-                      },
-                    }}
-                  >
+                  <Link href={`/brands/${brand.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <MenuItem
+                      onClick={handleBrandsMenuClose}
+                      sx={{
+                        py: 2,
+                        borderRadius: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: '1px solid rgba(0, 0, 0, 0.2)',
+                        '&:hover': {
+                          backgroundColor: 'rgba(0, 0, 0, 0.08)',
+                          borderColor: '#000000',
+                        },
+                      }}
+                    >
                     <Box
                       sx={{
                         width: 60,
@@ -721,6 +731,7 @@ const Navbar = () => {
                       {brand}
                     </Typography>
                   </MenuItem>
+                  </Link>
                 </Grid>
               ))}
             </Grid>

@@ -1,16 +1,17 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   Box,
   Container,
   Typography,
   Card,
   CardContent,
-  CardMedia,
   Paper,
+  Grid,
+  Button,
 } from '@mui/material';
-import Grid from "@mui/material/Grid";  
 import {
   LocalHospital,
   Science,
@@ -21,8 +22,6 @@ import {
   Star,
   FormatQuote,
 } from '@mui/icons-material';
-import { Button } from "@mui/material";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 
 
 export default function Home() {
@@ -44,7 +43,7 @@ export default function Home() {
     },
     {
       title: 'ICU & Emergency',
-      icon: <LocalHospitalIcon sx={{ fontSize: 50, color: '#1976d2' }} />,
+      icon: <LocalHospital sx={{ fontSize: 50, color: '#1976d2' }} />,
       description: 'Critical care and emergency medical equipment',
     },
   ];
@@ -86,20 +85,27 @@ export default function Home() {
             right: 0,
             bottom: 0,
             zIndex: 0,
+            '& img': {
+              filter: 'brightness(1.1) contrast(1.05)',
+            },
           }}
         >
         <Image
             src="/medical.jpg"
             alt="Surgical Instruments and Medical Supplies"
             fill
-            style={{ objectFit: 'cover', objectPosition: 'center center' }}
+            style={{ 
+              objectFit: 'cover', 
+              objectPosition: 'center center',
+            }}
             priority
             quality={95}
             sizes="100vw"
+            unoptimized={false}
           />
         </Box>
         
-        {/* Gradient Overlay for Text Readability */}
+        {/* Gradient Overlay for Text Readability - Lighter for better image visibility */}
         <Box
           sx={{
             position: 'absolute',
@@ -107,7 +113,7 @@ export default function Home() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%)',
+            background: 'linear-gradient(to right, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.02) 100%)',
             zIndex: 1,
           }}
         />
@@ -171,55 +177,59 @@ export default function Home() {
                 Your one-stop solution for all medical equipment needs.
               </Typography>
               <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', alignItems: 'center', mb: 4 }}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  sx={{
-                    backgroundColor: 'white',
-                    color: '#1976d2',
-                    px: 6,
-                    py: 2,
-                    fontSize: '1.1rem',
-                    fontWeight: 700,
-                    borderRadius: 3,
-                    boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-                    textTransform: 'none',
-                    '&:hover': {
-                      backgroundColor: '#f0f0f0',
-                      transform: 'translateY(-3px)',
-                      boxShadow: '0 12px 32px rgba(0,0,0,0.5)',
-                    },
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  }}
-                >
-                  Explore Products
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  sx={{
-                    borderColor: 'white',
-                    borderWidth: 2.5,
-                    color: 'white',
-                    px: 6,
-                    py: 2,
-                    fontSize: '1.1rem',
-                    fontWeight: 700,
-                    borderRadius: 3,
-                    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                    backdropFilter: 'blur(15px)',
-                    textTransform: 'none',
-                    '&:hover': {
+                <Link href="/products" style={{ textDecoration: 'none' }}>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      backgroundColor: 'white',
+                      color: '#1976d2',
+                      px: 6,
+                      py: 2,
+                      fontSize: '1.1rem',
+                      fontWeight: 700,
+                      borderRadius: 3,
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                      textTransform: 'none',
+                      '&:hover': {
+                        backgroundColor: '#f0f0f0',
+                        transform: 'translateY(-3px)',
+                        boxShadow: '0 12px 32px rgba(0,0,0,0.5)',
+                      },
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                  >
+                    Explore Products
+                  </Button>
+                </Link>
+                <Link href="/contact" style={{ textDecoration: 'none' }}>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    sx={{
                       borderColor: 'white',
-                      backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                      transform: 'translateY(-3px)',
-                      boxShadow: '0 8px 24px rgba(255,255,255,0.2)',
-                    },
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  }}
-                >
-                  Contact Us
-                </Button>
+                      borderWidth: 2.5,
+                      color: 'white',
+                      px: 6,
+                      py: 2,
+                      fontSize: '1.1rem',
+                      fontWeight: 700,
+                      borderRadius: 3,
+                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                      backdropFilter: 'blur(15px)',
+                      textTransform: 'none',
+                      '&:hover': {
+                        borderColor: 'white',
+                        backgroundColor: 'rgba(255, 255, 255, 0.25)',
+                        transform: 'translateY(-3px)',
+                        boxShadow: '0 8px 24px rgba(255,255,255,0.2)',
+                      },
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                  >
+                    Contact Us
+                  </Button>
+                </Link>
               </Box>
               
               {/* Trust Badges */}
@@ -464,8 +474,7 @@ export default function Home() {
       {/* Stats Section */}
       <Box
         sx={{
-          background: 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
-          color: 'white',
+          backgroundColor: 'white',
           py: 8,
         }}
       >
@@ -477,22 +486,37 @@ export default function Home() {
               { number: '50+', label: 'Product Categories' },
               { number: '15+', label: 'Years Experience' },
             ].map((stat, index) => (
-              <Grid item xs={6} md={3} key={index}>
-                <Box sx={{ textAlign: 'center' }}>
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <Card
+                  sx={{
+                    textAlign: 'center',
+                    p: 4,
+                    height: '100%',
+                    backgroundColor: 'white',
+                    border: '2px solid rgba(0, 0, 0, 0.1)',
+                    transition: 'transform 0.3s, box-shadow 0.3s',
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      boxShadow: 4,
+                      borderColor: '#1976d2',
+                    },
+                  }}
+                >
                   <Typography
                     variant="h2"
                     sx={{
                       fontWeight: 700,
                       mb: 1,
                       fontSize: { xs: '2.5rem', md: '3.5rem' },
+                      color: '#000000',
                     }}
                   >
                     {stat.number}
                   </Typography>
-                  <Typography variant="h6" sx={{ opacity: 0.9 }}>
+                  <Typography variant="h6" sx={{ color: '#000000', fontWeight: 600 }}>
                     {stat.label}
                   </Typography>
-                </Box>
+                </Card>
               </Grid>
             ))}
           </Grid>
@@ -514,23 +538,25 @@ export default function Home() {
           <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
             Contact us today for a consultation and discover how we can help meet your medical equipment needs.
           </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              backgroundColor: 'white',
-              color: '#1976d2',
-              px: 6,
-              py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 600,
-              '&:hover': {
-                backgroundColor: '#f5f5f5',
-              },
-            }}
-          >
-            Get in Touch
-          </Button>
+          <Link href="/contact" style={{ textDecoration: 'none' }}>
+            <Button
+              variant="contained"
+              size="large"
+              sx={{
+                backgroundColor: 'white',
+                color: '#1976d2',
+                px: 6,
+                py: 1.5,
+                fontSize: '1.1rem',
+                fontWeight: 600,
+                '&:hover': {
+                  backgroundColor: '#f5f5f5',
+                },
+              }}
+            >
+              Get in Touch
+            </Button>
+          </Link>
         </Container>
       </Box>
       <Footer />

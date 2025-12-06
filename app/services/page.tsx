@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   Box,
   Container,
@@ -202,19 +203,21 @@ export default function ServicesPage() {
                       </ListItem>
                     ))}
                   </List>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    sx={{
-                      mt: 3,
-                      backgroundColor: '#1976d2',
-                      '&:hover': {
-                        backgroundColor: '#1565c0',
-                      },
-                    }}
-                  >
-                    Learn More
-                  </Button>
+                  <Link href="/contact" style={{ textDecoration: 'none' }}>
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      sx={{
+                        mt: 3,
+                        backgroundColor: '#1976d2',
+                        '&:hover': {
+                          backgroundColor: '#1565c0',
+                        },
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </Grid>
@@ -238,19 +241,21 @@ export default function ServicesPage() {
                 technical issues, or service requests. We ensure prompt response and quick resolution
                 to keep your operations running smoothly.
               </Typography>
-              <Button
-                variant="contained"
-                size="large"
-                sx={{
-                  backgroundColor: '#1976d2',
-                  px: 4,
-                  '&:hover': {
-                    backgroundColor: '#1565c0',
-                  },
-                }}
-              >
-                Contact Support
-              </Button>
+              <Link href="/contact" style={{ textDecoration: 'none' }}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    backgroundColor: '#1976d2',
+                    px: 4,
+                    '&:hover': {
+                      backgroundColor: '#1565c0',
+                    },
+                  }}
+                >
+                  Contact Support
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </Container>
