@@ -30,6 +30,7 @@ export default function CategoriesPage() {
     {
       title: 'ICU Equipment',
       icon: <Warning sx={{ fontSize: 50, color: '#1976d2' }} />,
+      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop',
       items: [
         'Ventilators',
         'Patient Monitors',
@@ -199,7 +200,7 @@ export default function CategoriesPage() {
                   }}
                 >
                   <Image
-                    src={category.image}
+                    src={category.image || 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop'}
                     alt={category.title}
                     fill
                     style={{ objectFit: 'cover' }}
