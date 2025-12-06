@@ -26,7 +26,12 @@ import {
 } from '@mui/icons-material';
 
 export default function CategoriesPage() {
-  const categories = [
+  const categories: Array<{
+    title: string;
+    icon: React.ReactNode;
+    image: string;
+    items: string[];
+  }> = [
     {
       title: 'ICU Equipment',
       icon: <Warning sx={{ fontSize: 50, color: '#1976d2' }} />,
@@ -200,7 +205,7 @@ export default function CategoriesPage() {
                   }}
                 >
                   <Image
-                    src={category.image || 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop'}
+                    src={category.image ?? 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop'}
                     alt={category.title}
                     fill
                     style={{ objectFit: 'cover' }}
